@@ -70,7 +70,7 @@ public class Neuron {
     {
         double suma = 0;
         suma = a * weights[0] + b * weights[1]; 
-        if(suma >= theta)   //Funkcja progowa unipolarna
+        if(suma >= theta)
             suma = 1;
         else 
             suma = 0;
@@ -90,16 +90,16 @@ public class Neuron {
                 localError = 0-(int)results[i];
                 
                 //  HEBB bez zapominania
-                //weights[0] += eta*results[i]*values[0][i];
-                //weights[1] += eta*results[i]*values[1][i];
+                weights[0] += eta*results[i]*values[0][i];
+                weights[1] += eta*results[i]*values[1][i];
                 
                 // HEBB z zapominaniem
                 //weights[0] = weights[0]*(1-eta) + eta*results[i]*values[0][i];
                 //weights[1] = weights[1]*(1-eta) + eta*results[i]*values[1][i];
                 
                 //Oja 
-                weights[0] += eta*results[i]*(values[0][i]-weights[0]*results[i]);
-                weights[1] += eta*results[i]*(values[1][i]-weights[1]*results[i]);
+                //weights[0] += eta*results[i]*(values[0][i]-weights[0]*results[i]);
+                //weights[1] += eta*results[i]*(values[1][i]-weights[1]*results[i]);
                 
                 globalError = globalError + (localError*localError);
                 //System.out.println(values[0][i] +"   "+values[1][i] +"  |  "+ results[i]+"  => "+y );
